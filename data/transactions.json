@@ -1,0 +1,14 @@
+[
+    {
+        "transaction_id": 1,
+        "account": {
+            "account_id": 1,
+            "name": "Cash",
+            "account_type": "asset",
+            "balance": 1000.0
+        },
+        "amount": 1000.0,
+        "transaction_type": "credit",
+        "description": "Owner's Equity"
+    }
+]
