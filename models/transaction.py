@@ -7,4 +7,4 @@ class Transaction:
         self.description = description
 
     def __repr__(self):
-        return f"Transaction({self.transaction_id}, {self.account.name}, {self.amount}, {self.transaction_type})"
+        return f"Transaction({self.transaction_id}, {self.account}, {self.amount}, {self.transaction_type})"

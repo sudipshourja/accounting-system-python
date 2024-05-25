@@ -4,12 +4,14 @@ from models.transaction import Transaction
 from services.user_service import UserService
 from services.account_service import AccountService
 from services.transaction_service import TransactionService
+from services.statement_service import StatementService
 
 def main():
     # Initialize services
     user_service = UserService()
     account_service = AccountService()
     transaction_service = TransactionService()
+    statement_service = StatementService(account_service, transaction_service)
 
     # Simple user input loop
     while True:
@@ -37,7 +39,10 @@ def main():
                     print("2. Add Transaction")
                     print("3. View Accounts")
                     print("4. View Transactions")
-                    print("5. Logout")
+                    print("5. View Income Statement")
+                    print("6. View Balance Sheet")
+                    print("7. View Cash Flow Statement")
+                    print("8. Logout")
                     choice = input("Enter choice: ")
 
                     if choice == '1':
@@ -71,6 +76,24 @@ def main():
                             print(transaction)
 
                     elif choice == '5':
+                        income_statement = statement_service.generate_income_statement()
+                        print("Income Statement:")
+                        for key, value in income_statement.items():
+                            print(f"{key}: {value}")
+
+                    elif choice == '6':
+                        balance_sheet = statement_service.generate_balance_sheet()
+                        print("Balance Sheet:")
+                        for key, value in balance_sheet.items():
+                            print(f"{key}: {value}")
+
+                    elif choice == '7':
+                        cash_flow_statement = statement_service.generate_cash_flow_statement()
+                        print("Cash Flow Statement:")
+                        for key, value in cash_flow_statement.items():
+                            print(f"{key}: {value}")
+
+                    elif choice == '8':
                         print("Logged out")
                         break
 
